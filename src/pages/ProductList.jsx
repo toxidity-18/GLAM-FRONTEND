@@ -6,25 +6,17 @@ import { useToast } from "@/hooks/use-toast"
 import { AspectRatio } from '@radix-ui/react-aspect-ratio'
 import { useFetch } from '@/hooks/FetchContext'
 import { useGlobalContext } from "@/hooks/GlobalContext"; 
-
-
-
+import { Link } from 'react-router-dom';
 
 export default function ProductList() {
   const {products, addCart} = useGlobalContext()
-
-const [category, setCategory] = useState("All")
-const { toast } = useToast()
-
-
+  const [category, setCategory] = useState("All")
+  const { toast } = useToast()
 
   const uniqueCategories = ["All", ...new Set(products.map(product => product.category_name))]
-
   const filteredProducts = category === "All" 
     ? products 
     : products.filter(product => product.category_name === category)
-
-
 
   const handleAddToCart = (product) => {
     addCart(product)
@@ -38,42 +30,83 @@ const { toast } = useToast()
     <div className="container mx-auto py-10">
       <div className="flex justify-between items-center mb-6">
         <h1 className="text-2xl font-bold">Our Products</h1>
-      <Select onValueChange={setCategory} defaultValue="All">
-        <SelectTrigger className="w-[180px]">
-          <SelectValue placeholder="Select a category" />
-        </SelectTrigger>
-        <SelectContent>
-          {uniqueCategories.map(cat => (
-            <SelectItem key={cat} value={cat}>{cat}</SelectItem>
-          ))}
-        </SelectContent>
-      </Select>
-
+        <Select onValueChange={setCategory} defaultValue="All">
+          <SelectTrigger className="w-[180px]">
+            <SelectValue placeholder="Select a category" />
+          </SelectTrigger>
+          <SelectContent>
+            {uniqueCategories.map(cat => (
+              <SelectItem key={cat} value={cat}>{cat}</SelectItem>
+            ))}
+          </SelectContent>
+        </Select>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      {filteredProducts.length > 0 ? (
-  filteredProducts.map(product => (
-    <Card key={product.id}>
-      <CardHeader>
-        <AspectRatio ratio={16 / 9} className="justify-center flex align-middle">
-          <img src={product.image_url} alt={product.name} className="object-cover mb-4 rounded-md" />
-        </AspectRatio>
-        <CardTitle>{product.name}</CardTitle>
-        <CardDescription>{product.category_name}</CardDescription>
-      </CardHeader>
-      <CardContent>
-        <p className="text-2xl font-bold">KES {product.price.toFixed(2)}</p>
-      </CardContent>
-      <CardFooter>
-        <Button className="w-full" onClick={() => handleAddToCart(product)}>Add to Cart</Button>
-      </CardFooter>
-    </Card>
-  ))
-) : (
-  <p className="text-gray-300 font-bold  align-middle">No products available.</p> 
-)}
-
+        {filteredProducts.length > 0 ? (
+          filteredProducts.map(product => (
+            <Card key={product.id}>
+              <CardHeader>
+                <AspectRatio ratio={16 / 9} className="justify-center flex align-middle">
+                  <img src={product.image_url} alt={product.name} className="object-cover mb-4 rounded-md" />
+                </AspectRatio>
+                <CardTitle>{product.name}</CardTitle>
+                <CardDescription>{product.category_name}</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <p className="text-2xl font-bold">KES {product.price.toFixed(2)}</p>
+              </CardContent>
+              <CardFooter>
+                <Button className="w-full" onClick={() => handleAddToCart(product)}>Add to Cart</Button>
+              </CardFooter>
+            </Card>
+          ))
+        ) : (
+          <p className="text-gray-300 font-bold align-middle">No products available.</p> 
+        )}
       </div>
+
+      {/* Footer Section */}
+      <footer className="bg-pink-600 text-white py-10 mt-12">
+        <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-8 text-center sm:text-left">
+          {/* About Section in Footer */}
+          <div>
+            <h3 className="text-xl font-semibold mb-4">Beauty Shop</h3>
+            <p className="text-gray-200">
+              Discover the finest selection of beauty products tailored for all your skincare and makeup needs. Empowering your beauty, every day.
+            </p>
+          </div>
+
+          {/* Quick Links */}
+          <div>
+            <h3 className="text-xl font-semibold mb-4">Quick Links</h3>
+            <ul className="space-y-2">
+              <li><Link to="#about-us" className="hover:underline">About Us</Link></li>
+              <li><Link to="/products" className="hover:underline">Shop Products</Link></li>
+              <li><Link to="/contact" className="hover:underline">Contact Us</Link></li>
+              <li><Link to="/faq" className="hover:underline">FAQs</Link></li>
+            </ul>
+          </div>
+
+          {/* Contact Information */}
+          <div>
+            <h3 className="text-xl font-semibold mb-4">Get in Touch</h3>
+            <p><strong>Email:</strong> support@beautyshop.com</p>
+            <p><strong>Phone:</strong> +1 (800) 123-4567</p>
+            <div className="mt-4 flex justify-center sm:justify-start space-x-4">
+              {/* Social Media Icons */}
+              <a href="#" aria-label="Facebook" className="text-2xl text-white hover:text-pink-200"><i className="fab fa-facebook"></i></a>
+              <a href="#" aria-label="Instagram" className="text-2xl text-white hover:text-pink-200"><i className="fab fa-instagram"></i></a>
+              <a href="#" aria-label="Twitter" className="text-2xl text-white hover:text-pink-200"><i className="fab fa-twitter"></i></a>
+            </div>
+          </div>
+        </div>
+
+        {/* Footer Bottom */}
+        <div className="mt-8 text-center text-gray-200 text-sm">
+          <p>&copy; 2024 Beauty Shop. All rights reserved.</p>
+          <a href="#top" className="hover:underline">Back to Top</a>
+        </div>
+      </footer>
     </div>
   )
 }
