@@ -168,51 +168,48 @@ export default function Register() {
         </div>
       </div>
 
-      {/* Footer Section */}
      {/* Footer Section */}
-<footer className="bg-gray-800 text-white py-10 mt-12">
-  <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-8 text-center sm:text-left">
-    
-    {/* About Section in Footer */}
-    <div>
-      <h3 className="text-xl font-semibold mb-4">Beauty Shop</h3>
-      <p className="text-gray-400">
-        Discover the finest selection of beauty products tailored for all your skincare and makeup needs. Empowering your beauty, every day.
-      </p>
-    </div>
+     <footer className="bg-gray-800 text-pink-700 py-10 mt-12">
+        <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-8 text-center sm:text-left">
+          {/* About Section in Footer */}
+          <div>
+            <h3 className="text-xl font-semibold mb-4">Beauty Shop</h3>
+            <p className="text-pink-200">
+              Discover the finest selection of beauty products tailored for all your skincare and makeup needs. Empowering your beauty, every day.
+            </p>
+          </div>
 
-    {/* Quick Links */}
-    <div>
-      <h3 className="text-xl font-semibold mb-4">Quick Links</h3>
-      <ul className="space-y-2 text-gray-400">
-        <li><Link to="#about-us" className="hover:text-pink-300">About Us</Link></li>
-        <li><Link to="/products" className="hover:text-pink-300">Shop Products</Link></li>
-        <li><Link to="/contact" className="hover:text-pink-300">Contact Us</Link></li>
-        <li><Link to="/faq" className="hover:text-pink-300">FAQs</Link></li>
-      </ul>
-    </div>
+          {/* Quick Links */}
+          <div>
+            <h3 className="text-xl font-semibold mb-4">Quick Links</h3>
+            <ul className="space-y-2 text-pink-200">
+              <li><Link to="#about-us" className="hover:underline">About Us</Link></li>
+              <li><Link to="/products" className="hover:underline">Shop Products</Link></li>
+              <li><Link to="/contact" className="hover:underline">Contact Us</Link></li>
+              <li><Link to="/faq" className="hover:underline">FAQs</Link></li>
+            </ul>
+          </div>
 
-    {/* Contact Information */}
-    <div>
-      <h3 className="text-xl font-semibold mb-4">Get in Touch</h3>
-      <p className="text-gray-400"><strong>Email:</strong> support@beautyshop.com</p>
-      <p className="text-gray-400"><strong>Phone:</strong> +1 (800) 123-4567</p>
-      <div className="mt-4 flex justify-center sm:justify-start space-x-4">
-        {/* Social Media Icons */}
-        <a href="#" aria-label="Facebook" className="text-2xl text-white hover:text-pink-300"><i className="fab fa-facebook"></i></a>
-        <a href="#" aria-label="Instagram" className="text-2xl text-white hover:text-pink-300"><i className="fab fa-instagram"></i></a>
-        <a href="#" aria-label="Twitter" className="text-2xl text-white hover:text-pink-300"><i className="fab fa-twitter"></i></a>
-      </div>
-    </div>
-  </div>
+          {/* Contact Information */}
+          <div>
+            <h3 className="text-xl font-semibold mb-4">Get in Touch</h3>
+            <p className="text-pink-200"><strong>Email:</strong> support@beautyshop.com</p>
+            <p className="text-pink-200"><strong>Phone:</strong> +1 (800) 123-4567</p>
+            <div className="mt-4 text-pink-200 flex justify-center sm:justify-start space-x-4">
+              {/* Social Media Icons */}
+              <a href="#" aria-label="Facebook" className="text-2xl text-pink-200 hover:text-pink-200"><i className="fab fa-facebook"></i></a>
+              <a href="#" aria-label="Instagram" className="text-2xl text-pink-200 hover:text-pink-200"><i className="fab fa-instagram"></i></a>
+              <a href="#" aria-label="Twitter" className="text-2xl text-pink-200 hover:text-pink-200"><i className="fab fa-twitter"></i></a>
+            </div>
+          </div>
+        </div>
 
-  {/* Footer Bottom */}
-  <div className="mt-8 text-center text-gray-400 text-sm">
-    <p>&copy; 2024 Beauty Shop. All rights reserved.</p>
-    <a href="#top" className="hover:text-pink-300">Back to Top</a>
-  </div>
-</footer>
-
+        {/* Footer Bottom */}
+        <div className="mt-8 text-center text-gray-200 text-sm">
+          <p>&copy; 2024 Beauty Shop. All rights reserved.</p>
+          <a href="#top" className="hover:underline">Back to Top</a>
+        </div>
+      </footer>
     </div>
   )
 }
